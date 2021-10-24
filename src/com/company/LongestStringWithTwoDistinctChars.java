@@ -1,9 +1,10 @@
 package com.company;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LongestStringWithKDistinctChars {
+public class LongestStringWithTwoDistinctChars {
   public static int findLength(String s) {
     char [] arr = s.toCharArray();
     int windowStart = 0, maxLength = 0;
@@ -25,6 +26,34 @@ public class LongestStringWithKDistinctChars {
       }
 
       maxLength = Math.max(maxLength, windowEnd - windowStart + 1);
+    }
+
+    return maxLength;
+  }
+
+  public int lengthOfLongestSubstringTwoDistinct(String s) {
+
+    int windowStart = 0, maxLength = 2 , windowEnd = 0, stringLength = s.length();
+
+    if (stringLength < 3) return stringLength;
+
+    Map<Character, Integer> map = new HashMap<>();
+
+
+    while(windowEnd < stringLength) {
+
+      map.put(s.charAt(windowEnd), windowEnd++);
+
+      if (map.size() == 3) {
+
+        int minCharIndex = Collections.min(map.values());
+
+        map.remove(s.charAt(minCharIndex));
+
+        windowStart = minCharIndex + 1;
+      }
+
+      maxLength = Math.max(maxLength, windowEnd - windowStart);
     }
 
     return maxLength;

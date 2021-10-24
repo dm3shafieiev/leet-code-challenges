@@ -6,7 +6,7 @@ import java.util.Map;
 public class LongestSubstringWithoutRepeatingChars {
 
   public int lengthOfLongestSubstring(String s) {
-    Map<Character, Integer> uniqueChars = new HashMap<Character, Integer>();
+    Map<Character, Integer> uniqueChars = new HashMap<>();
     int maxSubStringLength = 0;
     int startOfSubString = 0;
 
