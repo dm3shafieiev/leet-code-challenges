@@ -35,6 +35,8 @@ public class MergeIntervals {
     resultList.toArray(resultArray);
 
     return resultArray;
+
+    //TC: O(nlogn); SC: O(logn)
   }
 
 }
