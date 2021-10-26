@@ -43,6 +43,45 @@ public class IntervalsListIntersection {
 
   }
 
+  /**
+   * more elegant solution
+   */
+
+  public int[][] intervalIntersectionElegant(int[][] firstList, int[][] secondList) {
+
+    int firstListPointer = 0;
+    int secondListPointer = 0;
+
+    List<int[]> resultList = new ArrayList<>();
+
+    while(firstListPointer < firstList.length && secondListPointer < secondList.length) {
+
+      int firstIntervalStart = firstList[firstListPointer][0];
+      int firstIntervalEnd = firstList[firstListPointer][1];
+      int secondIntervalStart = secondList[secondListPointer][0];
+      int secondIntervalEnd = secondList[secondListPointer][1];
+
+      int intersectionStart = Math.max(firstIntervalStart, secondIntervalStart);
+      int intersectionEnd = Math.min(firstIntervalEnd, secondIntervalEnd);
+
+      if(intersectionStart <= intersectionEnd) {
+        resultList.add(new int [] {intersectionStart, intersectionEnd});
+      }
+
+      if(firstList[firstListPointer][1] > secondList[secondListPointer][1] ) {
+        secondListPointer++;
+      }else {
+        firstListPointer++;
+      }
+
+    }
+
+    int [][]  resultArray = new int [resultList.size()][];
+
+    return resultList.toArray(resultArray);
+
+  }
+
   //TC: O(n+m) SC: O(n+m)
 
 }
