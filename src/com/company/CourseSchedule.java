@@ -15,7 +15,6 @@ public class CourseSchedule {
 
     int[] indegree = new int[numCourses];
     Queue<Integer> zeroDegrees = new LinkedList<>();
-    Queue<Integer> result = new LinkedList<>();
 
     countIndegreeForEachCourse(prerequisites, indegree);
 
@@ -29,7 +28,6 @@ public class CourseSchedule {
     //BFS across graph of courses deleting vertex with no in-degree edges and terminating connections with other vertexes
     while (!zeroDegrees.isEmpty()) {
       int course = zeroDegrees.poll();
-      result.add(course);
 
       for (int[] prer : prerequisites) {
 
@@ -41,8 +39,6 @@ public class CourseSchedule {
           }
         }
       }
-
-
     }
 
     for (int elem : indegree) {
