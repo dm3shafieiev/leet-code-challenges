@@ -8,7 +8,7 @@ public class RotateImage {
 
     int length = matrix.length;
 
-
+    ""
     for(int cycle = 0; cycle < (length +1 ) /  2; cycle++) {
 
       for(int pointer = 0; pointer < length  / 2; pointer++) {
